@@ -299,3 +299,7 @@ The project intentionally focuses on one high-impact workflow:
 Authentication, CRM synchronization, LLM-generated outreach, and additional screens are reasonable follow-ups, but they are intentionally outside the MVP until the acquisition-ranking workflow itself is validated.
 
 ---
+
+## Live demo
+
+[Open the live demo](https://acquisition-target-score.onrender.com)
