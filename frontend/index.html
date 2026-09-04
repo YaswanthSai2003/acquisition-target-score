@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acquisition Target Score</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Acquisition Target Score</h1>
+        <p class="subtitle">Prioritizing businesses by acquisition fit</p>
+      </div>
+      <button id="export-btn" class="btn btn-outline">Export CSV</button>
+    </header>
+
+    <div class="stats-bar" id="stats-bar" aria-live="polite">
+      <div class="stat-skeleton"></div>
+    </div>
+
+    <div class="layout">
+      <aside class="filters" aria-label="Filters">
+        <div class="filter-group">
+          <label for="search-input">Search company</label>
+          <input id="search-input" type="text" placeholder="e.g. Bluepoint" autocomplete="off" />
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Industry</span>
+          <div id="industry-list" class="checkbox-list"></div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Tier</span>
+          <div id="tier-list" class="tier-chip-list"></div>
+        </div>
+
+        <div class="filter-group">
+          <label for="min-score-input">Minimum score: <span id="min-score-value">0</span></label>
+          <input id="min-score-input" type="range" min="0" max="100" step="5" value="0" />
+        </div>
+
+        <button id="reset-filters" class="btn btn-ghost">Reset filters</button>
+      </aside>
+
+      <main class="results">
+        <table class="lead-table">
+          <thead>
+            <tr>
+              <th data-sort="company_name">Company</th>
+              <th data-sort="industry" class="hide-narrow">Industry</th>
+              <th data-sort="estimated_annual_revenue">Revenue</th>
+              <th data-sort="years_in_business" class="hide-narrow">Years</th>
+              <th data-sort="ats_score" class="sort-active" aria-sort="descending">ATS Score</th>
+            </tr>
+          </thead>
+          <tbody id="lead-table-body">
+            <tr><td colspan="5" class="empty-state">Loading leads…</td></tr>
+          </tbody>
+        </table>
+
+        <div class="pagination" id="pagination"></div>
+      </main>
+    </div>
+  </div>
+
+  <div id="drawer-overlay" class="drawer-overlay hidden"></div>
+  <aside id="drawer" class="drawer hidden" aria-label="Lead detail">
+    <button id="drawer-close" class="drawer-close" aria-label="Close detail panel">×</button>
+    <div id="drawer-content"></div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
